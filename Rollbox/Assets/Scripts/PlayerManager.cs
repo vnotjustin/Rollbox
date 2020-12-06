@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if (CurrentLevelManager.main != null)
                 {
-                    CurrentLevelManager.main.levelComplete = true;
+                    CurrentLevelManager.main.LevelCompleted();
                 }
             }
         }

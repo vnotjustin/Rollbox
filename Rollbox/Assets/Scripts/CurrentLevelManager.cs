@@ -6,7 +6,10 @@ public class CurrentLevelManager : MonoBehaviour
 {
 
     public static CurrentLevelManager main;
-
+    public LevelSelectInfo thisLevel;
+    public Palette generalPalette;
+    public int totalCratesDropped;
+    [Space]
     public bool mustReset;
     public SpriteRenderer resetDisplay;
 
@@ -42,7 +45,36 @@ public class CurrentLevelManager : MonoBehaviour
             PlayerManager.main.ResetPlayer();
         }
 
+        totalCratesDropped = 0;
+        TopLevelUI.main.UpdateCrateCount();
+
         mustReset = false;
         levelComplete = false;
+    }
+
+    public void AddCrate()
+    {
+        if (!levelComplete)
+        {
+            totalCratesDropped++;
+            TopLevelUI.main.UpdateCrateCount();
+        }
+    }
+
+    public void LevelCompleted()
+    {
+        if (!levelComplete)
+        {
+            levelComplete = true;
+            thisLevel.levelCompletionData.completed = true;
+            if (totalCratesDropped < thisLevel.levelCompletionData.cratesUsed)
+            {
+                thisLevel.levelCompletionData.cratesUsed = totalCratesDropped;
+            }
+            else if (thisLevel.levelCompletionData.cratesUsed == 0)
+            {
+                thisLevel.levelCompletionData.cratesUsed = totalCratesDropped;
+            }
+        }
     }
 }

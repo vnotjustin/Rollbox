@@ -137,6 +137,8 @@ public class CraneManagement : MonoBehaviour
     {
         if (holdingCrate)
         {
+            CurrentLevelManager.main.AddCrate();
+
             holdingCrate = false;
             Destroy(heldCrate.GetComponent<FixedJoint2D>());
             heldCrate.parent = crateHolder;
