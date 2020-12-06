@@ -1,0 +1,6 @@
+sceneSetups:
+- path: /Users/jordan/Library/Mobile Documents/com~apple~CloudDocs/.Trash/Rollbox
+    9.37.07 PM/Assets/Scenes/SampleScene.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
